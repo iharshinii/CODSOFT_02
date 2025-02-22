@@ -1,12 +1,10 @@
 import numpy as np
 
-# Tic-Tac-Toe board
 def print_board(board):
     for row in board:
         print(" | ".join(row))
     print("-" * 9)
 
-# Check if game is over
 def check_winner(board):
     for row in board:
         if row.count(row[0]) == 3 and row[0] != ' ':
@@ -26,7 +24,6 @@ def check_winner(board):
 
     return None
 
-# Minimax algorithm
 def minimax(board, is_maximizing):
     winner = check_winner(board)
     if winner == 'X':
@@ -57,7 +54,6 @@ def minimax(board, is_maximizing):
                     best_score = min(score, best_score)
         return best_score
 
-# AI Move
 def best_move(board):
     best_score = -np.inf
     move = None
@@ -72,14 +68,13 @@ def best_move(board):
                     move = (i, j)
     return move
 
-# Game Loop
 def play_tic_tac_toe():
     board = [[' ' for _ in range(3)] for _ in range(3)]
     print("Welcome to Tic-Tac-Toe!")
     print_board(board)
 
-    while True:
-        # Player Move
+    while True
+    
         try:
             row, col = map(int, input("Enter your move (row and column: 0 1 2): ").split())
             if board[row][col] != ' ':
@@ -95,7 +90,6 @@ def play_tic_tac_toe():
             print("Game Over! Winner:", check_winner(board))
             break
 
-        # AI Move
         move = best_move(board)
         if move:
             board[move[0]][move[1]] = 'O'
@@ -106,5 +100,4 @@ def play_tic_tac_toe():
             print("Game Over! Winner:", check_winner(board))
             break
 
-# Run the game
 play_tic_tac_toe()
